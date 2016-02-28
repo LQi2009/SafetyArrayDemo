@@ -1,0 +1,2 @@
+# SafetyArrayDemo
+防止数组越界和添加的值为nil引起的crash;有替换系统方法和自定义方法两种方式
