@@ -9,6 +9,8 @@
 #import "NSArray+SafetyArray.h"
 #include "NSObject+Until.h"
 
+static const NSString *lqq_defaultObject = @"defaultObject";
+
 @implementation NSArray (SafetyArray)
 #pragma mark - 第一种方式:使用runTime替换系统方法,防止数组越界或空值引起的crash
 +(void)load {
@@ -44,6 +46,7 @@
 
 @end
 
+
 @implementation NSMutableArray (SafetyArray)
 
 #pragma mark - 第一种方式:使用runTime替换系统方法,防止数组越界或空值引起的crash
@@ -60,7 +63,7 @@
 }
 -(void)lqq_addObject:(id)object {
     if (!object || [object isKindOfClass:[NSNull class]]) {
-        [self lqq_addObject:@"kong"];
+        [self lqq_addObject:lqq_defaultObject];
     } else {
         [self lqq_addObject:object];
     }
@@ -89,7 +92,7 @@
 
 -(void)lqqNew_addObject:(id)object {
     if (!object || [object isKindOfClass:[NSNull class]]) {
-        [self addObject:@"kong"];
+        [self addObject:lqq_defaultObject];
     } else {
         [self addObject:object];
     }

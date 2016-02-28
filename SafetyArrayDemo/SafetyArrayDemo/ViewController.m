@@ -21,6 +21,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     NSArray *array = @[@"a",@"d",@"f",@"g",@"t"];
+    
+    //数组越界,但是不会crash
     for (int i = 0; i < 10; i++) {
         NSLog(@"array >>> %@",[array objectAtIndex:i]);
     }
@@ -32,9 +34,12 @@
     
     NSMutableArray *mArray = [[NSMutableArray alloc]initWithArray:array];
     NSString *str = nil;
+    
+    //添加空值,不会crash
     [mArray addObject:str];
     [mArray lqqNew_addObject:str];
     
+    //可变数组越界,但是不会crash
     for (int i = 0; i < 10; i++) {
         NSLog(@"mArray >>> %@",[mArray objectAtIndex:i]);
     }
